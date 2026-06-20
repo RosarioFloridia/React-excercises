@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import "./Counter.css"
 
 type CounterProps = {
     initialValue: number,
@@ -15,22 +16,40 @@ function CounterDisplay({count}: CounterDisplayProps) {
     )
 }
 
+function Clock() {
+    const [currentTime, setTime] = useState(new Date())
+
+    useEffect(() => {
+        setInterval(() => {
+            setTime(new Date())
+        }, 1000)
+    }, [])
+    return (
+        <div>
+            <h2>{currentTime.toLocaleTimeString()}</h2>
+        </div>  
+    )
+}
+
 export function Counter({initialValue, increment}: CounterProps) {
 
-    const [counter,SetCounter] = useState(initialValue)
+    const [counter,setCounter] = useState(initialValue)
 
     function handleCounterIncrement() {
-        SetCounter((prevCounter) => prevCounter + increment)
+        setCounter((prevCounter) => prevCounter + increment)
         }
 
     function handleCounterDecrement() {
-        SetCounter((prevCounter) => prevCounter - increment)
+        setCounter((prevCounter) => prevCounter - increment)
         }
     
     function reset() {
-        SetCounter(initialValue)
+        setCounter(initialValue)
         }
-    
+
+    useEffect(() => {
+        console.log("Valore corrente del counter:", counter)
+    }, [counter])
     return (
         <div>
             <CounterDisplay count = {counter} />
@@ -38,6 +57,7 @@ export function Counter({initialValue, increment}: CounterProps) {
             <button onClick={handleCounterIncrement}>Incrementa</button>
             <button onClick={handleCounterDecrement}>Decrementa</button>
             <button onClick={reset}>Reset</button>
+            <Clock />
         </div>
     )
 }
