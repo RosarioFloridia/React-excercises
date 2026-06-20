@@ -1,11 +1,13 @@
-import { Counter } from "./counter/Counter"
+import { MouseClicker, MultiButton } from "./mouseclicker/MouseClicker"
+import "./app.css"
 
 function App() {
 
   return (
     <>
     <div>
-      <Counter initialValue={0} increment={1}/>
+      <MouseClicker />
+      <MultiButton />
     </div>
     </>
   )
