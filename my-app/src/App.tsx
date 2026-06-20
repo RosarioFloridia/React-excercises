@@ -1,11 +1,12 @@
-import './App.css'
-import { Welcome } from './welcome'
+import { Counter } from "./counter/Counter"
 
 function App() {
 
   return (
     <>
-      <Welcome name='Maria' age={17}/>
+    <div>
+      <Counter initialValue={0} increment={1}/>
+    </div>
     </>
   )
 }
