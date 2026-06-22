@@ -69,3 +69,11 @@ export function Login({onLogin}:LoginProps) {
     )
 }
 
+    // FUNZIONE UTILIZZATA IN COMPONENTE APP IN FASE DI RENDERING
+  // function handleLogin(data:{
+  //   username: string,
+  //   password: string,
+  //   remember: boolean,
+  // }) {
+  //   console.log(data)
+  // }
