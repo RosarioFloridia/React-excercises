@@ -17,6 +17,8 @@ export function Login({onLogin}:LoginProps) {
     const [password, setPassword] = useState("")
     const [remember, setRemember] = useState(false)
     
+    const enable = password.length > 0 && username.length > 0
+    
     function handleUsernameChange(event: React.ChangeEvent<HTMLInputElement>) {
         setUsername(event.target.value)
     }
@@ -59,7 +61,9 @@ export function Login({onLogin}:LoginProps) {
                     Remember me
                 </label>
             </div>
-            <button type="button" disabled={!password.trim() && !username.trim()} onClick={handleLogin}>Login!</button>
+
+            <button type="button" disabled={!enable} onClick={handleLogin}>Login!</button>
+
             <button type="button" onClick={handleReset}>Reset!</button>
         </form>
     )
