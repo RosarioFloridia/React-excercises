@@ -1,13 +1,13 @@
-import { MouseClicker, MultiButton } from "./mouseclicker/MouseClicker"
+
 import "./app.css"
+import { UncontrolledForm } from "./uncontrolledform/UncontrolledForm"
 
 function App() {
 
   return (
     <>
     <div>
-      <MouseClicker />
-      <MultiButton />
+      <UncontrolledForm />
     </div>
     </>
   )
