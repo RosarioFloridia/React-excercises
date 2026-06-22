@@ -1,5 +1,4 @@
-import { useEffect, useState } from "react";
-import "./Counter.css"
+import { useEffect, useRef, useState } from "react";
 
 type CounterProps = {
     initialValue: number,
@@ -16,25 +15,12 @@ function CounterDisplay({count}: CounterDisplayProps) {
     )
 }
 
-function Clock() {
-    const [currentTime, setTime] = useState(new Date())
-
-    useEffect(() => {
-        setInterval(() => {
-            setTime(new Date())
-        }, 1000)
-    }, [])
-    return (
-        <div>
-            <h2>{currentTime.toLocaleTimeString()}</h2>
-        </div>  
-    )
-}
-
 export function Counter({initialValue, increment}: CounterProps) {
-
     const [counter,setCounter] = useState(initialValue)
-
+    
+    const directionRef = useRef<string | null>(null);
+    const previousDirectionRef = useRef<string | null>(null);
+    
     function handleCounterIncrement() {
         setCounter((prevCounter) => prevCounter + increment)
         }
@@ -49,7 +35,25 @@ export function Counter({initialValue, increment}: CounterProps) {
 
     useEffect(() => {
         console.log("Valore corrente del counter:", counter)
-    }, [counter])
+
+        let newDirection: string | null = null
+
+        if (counter > initialValue ){
+            newDirection = "up";
+        } else if (counter < initialValue) {
+            newDirection = "down"
+        }
+
+        directionRef.current = newDirection;
+        
+        if (directionRef.current !== previousDirectionRef.current) {
+            console.log(directionRef.current)
+            previousDirectionRef.current = directionRef.current
+        }
+    }, [counter, initialValue])
+
+
+
     return (
         <div>
             <CounterDisplay count = {counter} />
@@ -57,7 +61,6 @@ export function Counter({initialValue, increment}: CounterProps) {
             <button onClick={handleCounterIncrement}>Incrementa</button>
             <button onClick={handleCounterDecrement}>Decrementa</button>
             <button onClick={reset}>Reset</button>
-            <Clock />
         </div>
     )
 }
