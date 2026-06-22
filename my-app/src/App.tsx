@@ -1,13 +1,25 @@
 
 import "./app.css"
-import { UncontrolledForm } from "./uncontrolledform/UncontrolledForm"
+import { InteractiveWelcome } from "./controlledform/InterractiveWelcome"
+import { Login } from "./controlledform/Login"
+
 
 function App() {
-
+  function handleLogin(data:{
+    username: string,
+    password: string,
+    remember: boolean,
+  }) {
+    console.log(data)
+  }
+  
   return (
     <>
     <div>
-      <UncontrolledForm />
+      <InteractiveWelcome/>
+    </div>
+    <div>
+      <Login onLogin={handleLogin}/>
     </div>
     </>
   )
