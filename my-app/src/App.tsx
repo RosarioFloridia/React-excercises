@@ -1,5 +1,6 @@
 import "./app.css"
-import { Colors, arrayColors } from "./colors/Colors"
+// import { Colors, arrayColors } from "./colors/Colors"
+import { toDoList, ToDoList } from "./todolist/TodoList"
 
 //  LIST OF NOT USED IMPORTS
 // import { Counter } from "./counter/Counter"
@@ -14,7 +15,7 @@ function App() {
   return (
     <>
       <div>
-        <Colors items={arrayColors} />
+        <ToDoList items={toDoList} />
       </div>
     </>
   )
