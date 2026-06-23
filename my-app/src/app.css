@@ -12,3 +12,7 @@ label {
 button {
     margin: 10px;
 }
+
+.avatar{
+    cursor: pointer;
+}

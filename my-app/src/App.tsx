@@ -1,6 +1,8 @@
 import "./app.css"
+// import { GithubUser } from "./githubuser/GitHubUser"
+import { GitHubUsers } from "./githubuser/GitHubUsers"
 // import { Colors, arrayColors } from "./colors/Colors"
-import { toDoList, ToDoList } from "./todolist/TodoList"
+// import { toDoList, ToDoList } from "./todolist/TodoList"
 
 //  LIST OF NOT USED IMPORTS
 // import { Counter } from "./counter/Counter"
@@ -15,7 +17,7 @@ function App() {
   return (
     <>
       <div>
-        <ToDoList items={toDoList} />
+        <GitHubUsers  />
       </div>
     </>
   )
