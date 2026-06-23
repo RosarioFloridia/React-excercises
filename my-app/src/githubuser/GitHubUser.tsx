@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react"
 
-type GithubUserProps = {
-    username: string
+interface GithubUserProps {
+    username: string,
 }
-type User = {
+interface User  {
     login: string,
     name: string,
     id: number,
@@ -16,10 +16,7 @@ export function GithubUser({ username }: GithubUserProps) {
     const [user, setUser] = useState<User | null>(null)
     
     async function fetchUser(username:string) {
-        if (!username) {
-        return null
-        }  
-
+        
         try{
             const response = await fetch(`https://api.github.com/users/${username}`)
             const json = await response.json()
@@ -29,6 +26,10 @@ export function GithubUser({ username }: GithubUserProps) {
         }
         
     }
+    if (!username) {
+        return null
+    }  
+
 
     useEffect(() => {
         fetchUser(username)

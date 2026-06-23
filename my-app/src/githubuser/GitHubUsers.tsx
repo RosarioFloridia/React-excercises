@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { GithubUser } from "./GitHubUser"
 
 
-type User = {
+interface User {
     login: string,
     name: string,
     id: number,
@@ -15,7 +15,6 @@ function GitHubListUsers({ user, onClick }: {
     user: User
     onClick: () => void
  }) {
-    console.log(user)
     return <li className="avatar" onClick={onClick}>{user.login}</li>
 }
 
@@ -30,7 +29,7 @@ export function GitHubUsers() {
             const json = await response.json()
             setUsers(json)
 
-            console.log(users)
+            
         } catch (error) { 
             console.log(error) 
         }
